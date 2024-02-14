@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            font-weight: 700;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 320px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #000000;
+            border-radius: 10px;
+        }
+        
+        .inputv {
+            margin-top: 30%;
+            width: 280px;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 18px;
+            text-align: right;
+            border: none;
+            color: white;
+            background-color: transparent;
+        }
+        
+        .button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 24px;
+            color: white;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+        }
+        
+        .orange {
+            background-color: #f6943b;
+        }
+
+        .orange:active {
+            background-color: #d3751d;
+        }
+        
+        .gray {
+            background-color: #a7a7a7;
+        }
+        
+        .gray:active {
+            background-color: #646464;
+        }
+
+        .sm{
+            background: rgb(87, 87, 87);
+        }
+
+        .sm:active{
+            background: rgb(70, 69, 69);
+        }
+        
+        .equals {
+            width: 140px;
+            background-color: #f6943b;
+            text-align: center;
+            border-radius: 20px;
+        }
+        
+        .equals:active {
+            background-color: #ff8c00;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <input id="inputv" class="inputv" value="0" type="text" disabled>
+        <div>
+            <button class="button gray">AC</button>
+            <button class="button gray">C</button>
+            <button class="button gray">%</button>
+            <button class="button orange" value="/">/</button>
+        </div>
+        <div>
+            <button class="button sm" value="7">7</button>
+            <button class="button sm" value="8">8</button>
+            <button class="button sm" value="9">9</button>
+            <button class="button orange" value="*">*</button>
+        </div>
+        <div>
+            <button class="button sm" value="4">4</button>
+            <button class="button sm" value="5">5</button>
+            <button class="button sm" value="6">6</button>
+            <button class="button orange" value="-">-</button>
+        </div>
+        <div>
+            <button class="button sm" value="1">1</button>
+            <button class="button sm" value="2">2</button>
+            <button class="button sm" value="3">3</button>
+            <button class="button orange" value="+">+</button>
+        </div>
+        <div>
+            <button class="button sm" value="0">0</button>
+            <button class="button sm" value=",">,</button>
+            <button class="button equals" value="=">=</button>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        const input = document.getElementById('inputv');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.value === '=') {
+                    input.value = eval(input.value);
+                } else if (input.value === '0') {
+                    input.value = button.value;
+                } else if (button.value === ''){
+                    input.value = ""
+                } else {
+                    input.value += button.value;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
